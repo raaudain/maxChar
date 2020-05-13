@@ -5,34 +5,34 @@
 
 function maxChar(str){
 
-  // // Solution #1
-  // const characters = {};
-  // let max = 0;
-  // let maxChar = "";
+  // Solution #1
+  const characters = {};
+  let max = 0;
+  let maxChar = "";
 
-  // for (let character of str){
-  //   // if (!characters[character]){
-  //   //   characters[character] = 1
-  //   // }
-  //   // else{
-  //   //   characters[character]++;
-  //   // }
+  for (let character of str){
+    // if (!characters[character]){
+    //   characters[character] = 1
+    // }
+    // else{
+    //   characters[character]++;
+    // }
 
-  //   // Solution #1.2
-  //   // If null or NaN add 1
-  //   characters[character] = characters[character] + 1 || 1;
-  // }
+    // Solution #1.2
+    // If null or NaN add 1
+    characters[character] = characters[character] + 1 || 1;
+  }
 
-  // for (let char in characters){
-  //   if(characters[char] > max){
-  //     max = characters[char];
-  //     //console.log(max)
-  //     maxChar = char;
-  //     //console.log(maxChar)
-  //   }
-  // }
+  for (let char in characters){
+    if(characters[char] > max){
+      max = characters[char];
+      //console.log(max)
+      maxChar = char;
+      //console.log(maxChar)
+    }
+  }
 
-  // return maxChar;
+  return maxChar;
 
 
   // Solution #2
@@ -41,9 +41,16 @@ function maxChar(str){
   let maxNum = 0;
   let maxChar = "";
 
-  str.split("").forEach(char => {
-    charMap[char] = charMap[char] + 1
-  })
+  str.split("").forEach(char => charMap[char] = charMap[char] + 1 || 1);
+
+  for (let char in charMap){
+    if(charMap[char] > maxNum){
+      maxNum = charMap[char];
+      maxChar = char;
+    }
+  }
+
+  return maxChar;
 
 }
 
